@@ -6,3 +6,4 @@ pandas>=2.2,<3
 scikit-learn>=1.5,<2
 seaborn>=0.13,<1
 pytest>=8,<9
+gunicorn
