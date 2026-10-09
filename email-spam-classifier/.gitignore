@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+database/*.sqlite3
+models/*.joblib
+models/metrics.json
+models/confusion_matrix.png
+data/**/*.zip

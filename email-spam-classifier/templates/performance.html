@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Model performance{% endblock %}
+{% block breadcrumb %}Model performance{% endblock %}
+{% block head %}<meta name="description" content="Evaluation metrics for TF-IDF spam models on held-out SMS data">{% endblock %}
+{% block content %}
+<section class="page-intro"><div><div class="eyebrow muted-eyebrow">MODEL TRANSPARENCY <span class="prototype-tag">SMS PROTOTYPE</span></div><h1>Trust, but inspect.</h1><p>Compare three classifiers on the same held-out test data. No training examples are included in these reported scores.</p></div><div class="intro-mark intro-mark-indigo"><i class="bi bi-activity"></i></div></section>
+<div class="notice notice-warning" data-metrics-warning hidden><i class="bi bi-exclamation-triangle-fill"></i><div><strong>Evaluation is not available</strong><span data-metrics-error>Train the models using a labeled dataset to generate real test-set scores.</span></div></div>
+<section class="metric-summary-grid" data-metric-summary hidden>
+  <article class="metric-summary"><span>Accuracy</span><strong data-metric="accuracy">—</strong><small>correct predictions overall</small></article>
+  <article class="metric-summary"><span>Precision <i class="bi bi-info-circle" title="Of messages flagged as spam, how many were spam"></i></span><strong data-metric="precision">—</strong><small>spam alerts that were correct</small></article>
+  <article class="metric-summary"><span>Recall <i class="bi bi-info-circle" title="Of spam messages in the test set, how many were found"></i></span><strong data-metric="recall">—</strong><small>spam messages found</small></article>
+  <article class="metric-summary"><span>Spam F1-score</span><strong data-metric="f1_score">—</strong><small>balance of precision and recall</small></article>
+</section>
+<section class="performance-grid">
+  <article class="panel performance-chart-panel"><div class="panel-heading"><div><div class="eyebrow muted-eyebrow">SAME HELD-OUT TEST SET</div><h3>Model comparison</h3></div><span class="selection-pill" data-best-model>Best model: —</span></div><div class="chart-wrap performance-chart-wrap"><canvas id="metrics-chart" aria-label="Comparison of model accuracy, precision, recall and F1-score"></canvas><div class="chart-empty" data-metrics-chart-empty hidden>Train models to compare results.</div></div></article>
+  <article class="panel confusion-panel"><div class="eyebrow muted-eyebrow">SELECTED MODEL</div><h3>Confusion matrix</h3><p class="panel-subtitle">Rows are actual messages. Columns are predictions.</p><div class="confusion-table-wrap" data-confusion-matrix><div class="confusion-placeholder">Real test results will appear after training.</div></div><div class="confusion-key"><span><i class="legend-dot legend-ham"></i> Correct classification</span><span><i class="legend-dot legend-spam"></i> Incorrect classification</span></div></article>
+</section>
+<section class="performance-bottom-grid">
+  <article class="panel feature-panel"><div class="panel-heading"><div><div class="eyebrow muted-eyebrow">LEARNED FROM TRAINING DATA</div><h3>Words that influence the model</h3></div></div><p class="panel-subtitle">Relative term weights for the selected model, not rules or guarantees.</p><div class="feature-columns"><div><div class="feature-heading spam-text"><i class="bi bi-exclamation-circle"></i> Spam-associated</div><div data-features="spam" class="feature-list"></div></div><div><div class="feature-heading ham-text"><i class="bi bi-check-circle"></i> Ham-associated</div><div data-features="ham" class="feature-list"></div></div></div></article>
+  <aside class="method-card"><span class="method-icon"><i class="bi bi-journal-check"></i></span><div class="eyebrow muted-eyebrow">EVALUATION NOTES</div><h3>One fair test.</h3><p data-method-copy>Train a model to see dataset-specific methodology and test sample counts.</p><div class="method-divider"></div><div class="method-stat"><span>Test messages</span><strong data-test-rows>—</strong></div><div class="method-stat"><span>Dataset</span><strong data-dataset-name>—</strong></div><div class="method-disclaimer"><i class="bi bi-info-circle"></i><span>SMS benchmark scores do not represent performance on full-length emails.</span></div></aside>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/charts.js') }}"></script>{% endblock %}

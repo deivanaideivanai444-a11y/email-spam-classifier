@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Classify message{% endblock %}
+{% block breadcrumb %}Classify message{% endblock %}
+{% block content %}
+<section class="page-intro"><div><div class="eyebrow muted-eyebrow">MESSAGE ANALYSIS <span class="prototype-tag">SMS PROTOTYPE</span></div><h1>What’s in this message?</h1><p>Paste a message below. The model compares its language with patterns learned from labeled SMS examples.</p></div><div class="intro-mark"><i class="bi bi-chat-square-heart"></i></div></section>
+<div class="notice notice-warning" data-model-warning hidden><i class="bi bi-exclamation-triangle-fill"></i><div><strong>Model not trained yet</strong><span>Train with <code>python train_model.py</code> from the project folder to enable predictions.</span></div></div>
+<section class="classifier-layout">
+  <article class="panel composer-panel">
+    <div class="panel-heading composer-heading"><div><div class="eyebrow muted-eyebrow">NEW ANALYSIS</div><h2>Message content</h2></div><span class="secure-label"><i class="bi bi-lock"></i> Preview stored privately</span></div>
+    <form id="prediction-form" novalidate>
+      <label for="message-text" class="field-label">Paste or type message</label>
+      <textarea id="message-text" name="text" maxlength="20000" placeholder="Paste the message you’d like to inspect…" required></textarea>
+      <div class="textarea-meta"><span>Message text stays on this local app.</span><span><b data-character-count>0</b> / 20,000</span></div>
+      <div class="sample-row"><span class="sample-label">TRY A SAMPLE</span><button type="button" class="sample-button" data-sample="spam"><i class="bi bi-lightning-charge"></i> Suspicious offer</button><button type="button" class="sample-button" data-sample="ham"><i class="bi bi-chat-left-text"></i> Everyday note</button></div>
+      <div class="form-error" role="alert" data-form-error hidden></div>
+      <button class="button-primary predict-button" type="submit"><span class="button-content"><i class="bi bi-search"></i> Analyze message</span><span class="button-loading" hidden><span class="spinner"></span> Analyzing…</span><i class="bi bi-arrow-up-right button-arrow"></i></button>
+    </form>
+  </article>
+  <aside class="result-column">
+    <article class="panel result-panel" id="prediction-result" aria-live="polite">
+      <div class="result-placeholder"><span class="result-placeholder-icon"><i class="bi bi-stars"></i></span><div class="eyebrow muted-eyebrow">YOUR RESULT</div><h2>Ready when you are</h2><p>Your classification and model confidence will appear here.</p></div>
+      <div class="result-content" hidden>
+        <div class="result-label-row"><span class="result-badge" data-result-badge><i></i><span></span></span><span class="result-model" data-result-model></span></div>
+        <div class="eyebrow muted-eyebrow">MODEL CONFIDENCE</div><div class="confidence-value"><strong data-confidence-value>—</strong><span>for this prediction</span></div>
+        <div class="confidence-track"><span data-confidence-bar></span></div>
+        <p class="confidence-note">Estimated probability for the predicted class, not a guarantee. Spam probability: <strong data-spam-probability>—</strong>.</p>
+        <div class="result-disclaimer"><i class="bi bi-info-circle"></i><span>Trained on SMS messages, so results on full emails may differ.</span></div>
+      </div>
+    </article>
+    <article class="privacy-note"><i class="bi bi-shield-lock"></i><div><strong>Privacy by design</strong><span>History stores a short preview with email addresses and links redacted, never the full message.</span></div></article>
+  </aside>
+</section>
+{% endblock %}

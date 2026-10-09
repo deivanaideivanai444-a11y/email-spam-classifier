@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Overview{% endblock %}
+{% block breadcrumb %}Overview{% endblock %}
+{% block content %}
+<section class="welcome-panel">
+  <div class="welcome-copy">
+    <div class="eyebrow"><span class="eyebrow-line"></span> EMAIL SPAM CLASSIFIER <span class="prototype-tag">SMS PROTOTYPE</span></div>
+    <h1>Make your inbox<br>feel <span>lighter.</span></h1>
+    <p>Inspect a message, see what the model noticed, and understand the signals behind every classification.</p>
+    <a class="button-primary" href="{{ url_for('classify_page') }}"><i class="bi bi-plus-lg"></i> Analyze a message <i class="bi bi-arrow-up-right button-arrow"></i></a>
+  </div>
+  <div class="welcome-art" aria-hidden="true">
+    <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+    <div class="signal-card signal-card-back"><span class="signal-mini-dot"></span> Message scanned</div>
+    <div class="signal-card signal-card-front"><span class="signal-shield"><i class="bi bi-shield-check"></i></span><span><small>CLASSIFICATION</small><strong>In good hands</strong></span><i class="bi bi-check-circle-fill signal-check"></i></div>
+    <div class="signal-card signal-card-label"><i class="bi bi-stars"></i> Signal, not noise.</div>
+  </div>
+</section>
+
+<div class="section-heading"><div><div class="eyebrow muted-eyebrow">YOUR WORKSPACE</div><h2>At a glance</h2></div><a class="quiet-link" href="{{ url_for('dashboard_page') }}">Open dashboard <i class="bi bi-arrow-right"></i></a></div>
+<section class="stats-grid" data-stats-view>
+  <article class="stat-card stat-card-blue"><div class="stat-top"><span>Total analyzed</span><span class="stat-icon"><i class="bi bi-inboxes"></i></span></div><strong data-stat="total">—</strong><div class="stat-foot">messages checked in this workspace</div></article>
+  <article class="stat-card stat-card-rose"><div class="stat-top"><span>Flagged as spam</span><span class="stat-icon"><i class="bi bi-shield-exclamation"></i></span></div><strong data-stat="spam">—</strong><div class="stat-foot">messages classified as spam</div></article>
+  <article class="stat-card stat-card-green"><div class="stat-top"><span>Marked as ham</span><span class="stat-icon"><i class="bi bi-shield-check"></i></span></div><strong data-stat="ham">—</strong><div class="stat-foot">messages classified as legitimate</div></article>
+  <article class="stat-card stat-card-violet"><div class="stat-top"><span>Spam share</span><span class="stat-icon"><i class="bi bi-pie-chart"></i></span></div><strong><span data-stat="percentage">—</span><small>%</small></strong><div class="stat-foot">of messages analyzed here</div></article>
+</section>
+
+<section class="home-lower-grid">
+  <article class="panel activity-panel"><div class="panel-heading"><div><div class="eyebrow muted-eyebrow">RECENT ACTIVITY</div><h3>Message flow</h3></div><a href="{{ url_for('dashboard_page') }}" class="panel-link" aria-label="View dashboard" title="View dashboard"><i class="bi bi-arrow-up-right"></i></a></div><div class="chart-wrap chart-wrap-short"><canvas id="prediction-chart" aria-label="Daily messages classified as spam or ham"></canvas><div class="chart-empty" data-prediction-empty>Analyze a message to start your activity view.</div></div></article>
+  <article class="panel start-panel"><div class="start-icon"><i class="bi bi-cpu"></i></div><div class="eyebrow muted-eyebrow">MODEL STATUS</div><h3 data-home-model-title>Checking model…</h3><p data-home-model-copy>The app only reports evaluation results from a real held-out test set.</p><a class="text-action" href="{{ url_for('performance_page') }}">Review model performance <i class="bi bi-arrow-right"></i></a></article>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>{% endblock %}

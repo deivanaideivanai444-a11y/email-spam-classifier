@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}History{% endblock %}
+{% block breadcrumb %}History{% endblock %}
+{% block content %}
+<section class="page-intro"><div><div class="eyebrow muted-eyebrow">LOCAL ACTIVITY LOG</div><h1>Prediction history</h1><p>Recent analyses saved on this device. Sensitive message details are shortened and redacted.</p></div><button class="button-secondary" type="button" data-clear-history><i class="bi bi-trash3"></i> Clear history</button></section>
+<article class="panel history-panel">
+  <div class="panel-heading"><div><div class="eyebrow muted-eyebrow">RECENT MESSAGES</div><h3>Latest analyses</h3></div><span class="history-count" data-history-count>Loading…</span></div>
+  <div class="table-responsive"><table class="history-table"><thead><tr><th>MESSAGE PREVIEW</th><th>RESULT</th><th>CONFIDENCE</th><th>CHARACTERS</th><th>ANALYZED</th></tr></thead><tbody data-history-body><tr><td colspan="5"><div class="table-loading"><span class="spinner spinner-dark"></span> Loading history…</div></td></tr></tbody></table></div>
+  <div class="history-empty" data-history-empty hidden><span><i class="bi bi-inbox"></i></span><h3>Nothing here yet</h3><p>Messages you analyze will appear here with private details redacted.</p><a class="text-action" href="{{ url_for('classify_page') }}">Analyze your first message <i class="bi bi-arrow-right"></i></a></div>
+</article>
+{% endblock %}

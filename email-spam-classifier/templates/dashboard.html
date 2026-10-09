@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block breadcrumb %}Dashboard{% endblock %}
+{% block content %}
+<section class="page-intro"><div><div class="eyebrow muted-eyebrow">WORKSPACE ANALYTICS</div><h1>Your message activity</h1><p>Counts update as you analyze messages. Model scores come from the separate held-out evaluation set.</p></div><a class="button-primary compact-button" href="{{ url_for('classify_page') }}"><i class="bi bi-plus-lg"></i> New analysis</a></section>
+<section class="stats-grid dashboard-stats" data-stats-view>
+  <article class="stat-card stat-card-blue"><div class="stat-top"><span>Total analyzed</span><span class="stat-icon"><i class="bi bi-inboxes"></i></span></div><strong data-stat="total">—</strong><div class="stat-foot">in this local workspace</div></article>
+  <article class="stat-card stat-card-rose"><div class="stat-top"><span>Spam detected</span><span class="stat-icon"><i class="bi bi-shield-exclamation"></i></span></div><strong data-stat="spam">—</strong><div class="stat-foot">flagged by the selected model</div></article>
+  <article class="stat-card stat-card-green"><div class="stat-top"><span>Ham detected</span><span class="stat-icon"><i class="bi bi-shield-check"></i></span></div><strong data-stat="ham">—</strong><div class="stat-foot">classified as legitimate</div></article>
+  <article class="stat-card stat-card-violet"><div class="stat-top"><span>Spam share</span><span class="stat-icon"><i class="bi bi-pie-chart"></i></span></div><strong><span data-stat="percentage">—</span><small>%</small></strong><div class="stat-foot">of analyzed messages</div></article>
+</section>
+<section class="dashboard-grid">
+  <article class="panel chart-panel"><div class="panel-heading"><div><div class="eyebrow muted-eyebrow">LAST 7 ACTIVE DAYS</div><h3>Classification volume</h3></div><div class="chart-legend"><span><i class="legend-dot legend-spam"></i>Spam</span><span><i class="legend-dot legend-ham"></i>Ham</span></div></div><div class="chart-wrap"><canvas id="prediction-chart" aria-label="Daily message classification volume"></canvas><div class="chart-empty" data-prediction-empty>No analyzed messages yet.</div></div></article>
+  <article class="panel split-panel"><div class="eyebrow muted-eyebrow">MESSAGE MIX</div><h3>What the model sees</h3><div class="mix-chart-wrap"><canvas id="mix-chart" aria-label="Ratio of spam and ham predictions"></canvas><div class="mix-center"><strong data-stat="total">—</strong><span>messages</span></div></div><div class="mix-legend"><span><i class="legend-dot legend-spam"></i>Spam <strong data-stat="spam">—</strong></span><span><i class="legend-dot legend-ham"></i>Ham <strong data-stat="ham">—</strong></span></div></article>
+</section>
+<div class="dashboard-footnote"><i class="bi bi-info-circle"></i> Workspace counts are from your local prediction history. They are not model accuracy metrics.</div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>{% endblock %}
