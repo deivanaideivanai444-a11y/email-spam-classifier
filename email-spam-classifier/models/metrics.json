@@ -1,0 +1,200 @@
+{
+  "best_model": "Support Vector Machine",
+  "selection_metric": "Validation spam-class F1-score, with validation accuracy as the tie-breaker",
+  "dataset_name": "UCI SMS Spam Collection",
+  "dataset_type": "SMS-based prototype; metrics do not establish full-email performance",
+  "dataset_rows_used": 5572,
+  "training_rows": 4457,
+  "selection_training_rows": 3342,
+  "validation_rows": 1115,
+  "test_rows": 1115,
+  "test_size": 0.2,
+  "random_state": 42,
+  "selection_random_state": 43,
+  "label_order": [
+    "ham",
+    "spam"
+  ],
+  "selection_scores": {
+    "Multinomial Naive Bayes": {
+      "accuracy": 0.9677,
+      "f1_score": 0.8647
+    },
+    "Logistic Regression": {
+      "accuracy": 0.9803,
+      "f1_score": 0.9272
+    },
+    "Support Vector Machine": {
+      "accuracy": 0.9848,
+      "f1_score": 0.9446
+    }
+  },
+  "models": {
+    "Multinomial Naive Bayes": {
+      "accuracy": 0.9695,
+      "precision": 1.0,
+      "recall": 0.7718,
+      "f1_score": 0.8712,
+      "confusion_matrix": [
+        [
+          966,
+          0
+        ],
+        [
+          34,
+          115
+        ]
+      ]
+    },
+    "Logistic Regression": {
+      "accuracy": 0.9794,
+      "precision": 0.9145,
+      "recall": 0.9329,
+      "f1_score": 0.9236,
+      "confusion_matrix": [
+        [
+          953,
+          13
+        ],
+        [
+          10,
+          139
+        ]
+      ]
+    },
+    "Support Vector Machine": {
+      "accuracy": 0.9821,
+      "precision": 0.9161,
+      "recall": 0.953,
+      "f1_score": 0.9342,
+      "confusion_matrix": [
+        [
+          953,
+          13
+        ],
+        [
+          7,
+          142
+        ]
+      ]
+    }
+  },
+  "best": {
+    "accuracy": 0.9821,
+    "precision": 0.9161,
+    "recall": 0.953,
+    "f1_score": 0.9342,
+    "confusion_matrix": [
+      [
+        953,
+        13
+      ],
+      [
+        7,
+        142
+      ]
+    ]
+  },
+  "important_features": {
+    "spam": [
+      {
+        "word": "urltoken",
+        "weight": 3.4667
+      },
+      {
+        "word": "txt",
+        "weight": 2.9632
+      },
+      {
+        "word": "claim",
+        "weight": 2.462
+      },
+      {
+        "word": "mobile",
+        "weight": 2.442
+      },
+      {
+        "word": "uk",
+        "weight": 2.3693
+      },
+      {
+        "word": "service",
+        "weight": 2.2658
+      },
+      {
+        "word": "150p",
+        "weight": 2.1895
+      },
+      {
+        "word": "reply",
+        "weight": 2.1297
+      },
+      {
+        "word": "50",
+        "weight": 1.9659
+      },
+      {
+        "word": "146tf150p",
+        "weight": 1.8431
+      },
+      {
+        "word": "stop",
+        "weight": 1.8151
+      },
+      {
+        "word": "prize",
+        "weight": 1.6999
+      }
+    ],
+    "ham": [
+      {
+        "word": "hey",
+        "weight": 0.8627
+      },
+      {
+        "word": "ll",
+        "weight": 0.7726
+      },
+      {
+        "word": "customer place",
+        "weight": 0.7602
+      },
+      {
+        "word": "ok",
+        "weight": 0.6899
+      },
+      {
+        "word": "sir",
+        "weight": 0.68
+      },
+      {
+        "word": "later",
+        "weight": 0.6703
+      },
+      {
+        "word": "sorry",
+        "weight": 0.6382
+      },
+      {
+        "word": "yup",
+        "weight": 0.6276
+      },
+      {
+        "word": "da",
+        "weight": 0.6059
+      },
+      {
+        "word": "home",
+        "weight": 0.5948
+      },
+      {
+        "word": "got",
+        "weight": 0.5551
+      },
+      {
+        "word": "ll text",
+        "weight": 0.537
+      }
+    ]
+  }
+}
